@@ -1,0 +1,391 @@
+html {
+    scroll-behavior: smooth; /*This ensures that the page scrolling is smooth when the buttons on the nav bar is clicked */
+}
+
+/* Body */
+body {
+    margin: 0%;
+    opacity: 1;
+    transition: 3s opacity;
+    letter-spacing: .2vw;
+    font-family: Avant Garde, Helvetica;
+    font-size: 1.5vw; 
+    overflow-x: hidden;
+    user-select: none;
+    background-color: #e6f0fa; /* light blue background */
+    color: #1a3b6f; /* dark blue text */
+}
+
+/* This section contributes to the fade effect for the page that occurs when the page is loaded */
+body.fade-out {
+    opacity: .1;
+}
+
+/* Heading 1 elements */
+h1 {
+    text-transform: uppercase;
+    font-family: "Trebuchet MS", Optima;
+    text-align: center;
+    margin-top: 3%;
+    color: #0b2e75; /* deep blue */
+}
+
+/* Heading 1 element hover effect */
+h1:hover {
+    filter: grayscale(5%);
+    transform: scale(1.1);
+    transition: transform 1s;
+}
+
+/* Styling for Portfolio Title Text */
+.white-text {
+    color: #d9e8ff; /* very pale blue (instead of white) */
+    padding-top: 10vh;
+}
+
+/* Paragraph elements */
+p {
+    font-family: Perpetua, Rockwell Extra Bold;
+    text-align: justify;
+    letter-spacing: .1vw;
+    font-size: 2.5vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    color: #2a4d8f; /* medium blue */
+}
+
+/* Paragraph element hover effect */
+p:hover {
+    transition: transform 1s;
+    transform: scale(1.01);
+}
+
+/* Center class */
+.center {
+    text-align: center;
+}
+
+/* Center align elements hover effect */
+.center:hover {
+    transition: transform 2s;
+    transform: scale(1.1);
+}
+
+/* Anchor elements */
+a {
+    color: #337ab7; /* bootstrap blue */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* Quotation elements */
+q {
+    font-style: italic;
+}
+
+/* Image elements */
+img {
+    filter: grayscale(75%);
+    border-radius: 8px;
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: auto auto auto auto;
+}
+
+/* Image element hover effects */
+img:hover {
+    filter: grayscale(5%);
+}
+
+/* Styling for footer element */
+footer {
+    padding: 2%;
+    background-color: #d9e8ff; /* light pale blue background */
+    color: #0b2e75;
+}
+
+/***** Navbar Styling *****/
+.Navbar {
+    overflow: hidden;
+    background-color: #0b2e75; /* dark blue navbar */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    -webkit-animation: moveNav 5s;
+    animation: moveNav 5s;
+}
+
+/* Navbar Links */
+.Navbar a {
+    float: left;
+    display: block;
+    color: #d9e8ff; /* very pale blue */
+    padding: .75vw 1vw;
+    text-decoration: none;
+    font-family: Avant Garde, Helvetica;
+    font-size: 1.5vw;
+    text-align: center;
+    position: relative;
+    -webkit-animation: moveNavText 5.75s;
+    animation: moveNavText 5.75s;
+}
+
+/* Navbar hover effects */
+.Navbar a:hover {
+    background-color: #b3c7f9; /* lighter blue hover */
+    color: #0b2e75; /* dark blue text */
+    cursor: pointer;
+    transition: 0.5s ease-in;
+}
+
+/* Navbar home button */
+.Navbar a.active {
+    background-color: #6495ed; /* cornflower blue */
+}
+
+/***** Video Styling *****/
+#Typing_Video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    z-index: -1;
+}
+
+.Video_Text {
+    background: rgba(11, 46, 117, 0.5); /* dark blue semi-transparent */
+    color: #d9e8ff; /* pale blue text */
+    width: 100%;
+    height: 100vh;
+    padding-top: 2vh;
+    position: relative;
+    -webkit-animation: moveVideoText 5.75s;
+    animation: moveVideoText 5.75s;
+}
+
+/***** Slideshow Styling *****/
+#Slideshow_Background {
+    background: rgba(217, 232, 255, 0.35); /* transparent pale blue */
+}
+
+.mySlides {
+    display: none;
+}
+
+#Slideshow_Container {
+    width: 39.5vw;
+    height: auto;
+    padding-top: 4%;
+    position: relative;
+    margin:auto;
+}
+
+#Slideshow_Container a {
+    text-decoration: none;
+}
+
+.Slideshow_Images {
+    vertical-align: middle;
+    height: auto;
+    box-shadow: 0px 5px 10px 12px rgba(11, 46, 117, 0.75); /* blue shadow */
+    width: 100%;
+}
+
+.Previous, .Next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 2vw;
+    color: #6495ed; /* cornflower blue */
+    font-weight: bold;
+    font-size: 1.5vw;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    transition: 0.6s ease;
+}
+
+.Next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.Previous:hover, .Next:hover {
+    background-color: rgba(11, 46, 117, 0.8);
+    color: white;
+}
+
+.text {
+    color: #d9e8ff;
+    padding: 1vw;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-family: Perpetua, Rockwell Extra Bold;
+    letter-spacing: .1vw;
+    font-size: 1.5vw;
+    background-color: rgba(11, 46, 117, 0.75);
+    font-weight: bold;
+    border-radius: 0px 0px 7px 7px;
+}
+
+.dot {
+    cursor: pointer;
+    height: 1vw;
+    width: 1vw;
+    margin: .25vw;
+    background-color: #d9e8ff;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    z-index: 1;
+}
+
+.active, .dot:hover {
+    background-color: #0b2e75;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: .4;}
+    to {opacity: 1;}
+}
+
+@keyframes fade {
+    from {opacity: .4;}
+    to {opacity: 1;}
+}
+
+/***** Table Styling *****/
+* {
+    box-sizing: border-box;
+}
+
+.Column_1 {
+    float: left;
+    width: 50%;
+    padding: 1.6%;
+    height: 450px;
+    background-color: #d9e8ff; /* light pale blue */
+    color: #0b2e75;
+}
+
+.Column_2 {
+    float: left;
+    width: 50%;
+    padding: 1.6%;
+    height: 450px;
+    background-color: #0b2e75; /* dark blue */
+    color: #d9e8ff;
+}
+
+.Row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/***** Contact Form Styling *****/
+.Pop_Up_Button {
+    position: fixed;
+    bottom: 1.75vw;
+    right: 1.75vw;
+    width: 25vw;
+    background-color: #d9e8ff;
+    color: #0b2e75;
+    border: solid #0b2e75;
+    cursor: pointer;
+    -webkit-animation: movePopup 5s;
+    animation: movePopup 5s;
+}
+
+@keyframes movePopup {
+    from {right: -40vw;}
+    to {right: 1.75vw;}
+}
+
+@-webkit-keyframes movePopup {
+    from {right: -40vw;}
+    to {right: 1.75vw;}
+}
+
+.form-popup {
+    z-index: 8;
+    display: none;
+    position: fixed;
+    bottom: .5vw;
+    right: .5vw;
+}
+
+.form-container {
+    max-width: 49vw;
+    padding: 1vw;
+    background-color: #d9e8ff;
+    color: #0b2e75;
+}
+
+.form-container input[type=text] {
+    width: 100%;
+    padding: .93vw;
+    margin: .6vw 0 .6vw 0;
+    border: none;
+    background: #b3c7f9;
+    font-size: 1vw;
+    color: #0b2e75;
+}
+
+button {
+    font-family: "Trebuchet MS", Optima;
+    letter-spacing: .3vw;
+    font-size: 1.5vw;
+    font-weight: bold;
+    padding: 1.5vw;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 1vw;
+    opacity: 0.95;
+    border: none;
+    color: #0b2e75;
+    background-color: #b3c7f9;
+    transition: 0.5s ease-in;
+}
+
+.form-container button:hover {
+    background-color: #6495ed;
+    color: #d9e8ff;
+}
+
+/***** Responsive styles *****/
+@media (max-width: 800px) {
+    body {
+        font-size: 3vw;
+    }
+
+    .Navbar a {
+        font-size: 3vw;
+        padding: 2vw;
+    }
+
+    #Slideshow_Container {
+        width: 95vw;
+    }
+
+    .Column_1, .Column_2 {
+        width: 100%;
+        height: auto;
+        padding: 2vw;
+    }
+
+    .form-container {
+        max-width: 95vw;
+    }
+}
