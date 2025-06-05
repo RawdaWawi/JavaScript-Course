@@ -1,26 +1,177 @@
-<script>
-  const lightbox = document.getElementById("lightbox-modal");
-  const lightboxImg = document.getElementById("lightbox-img");
-  const closeBtn = document.querySelector(".lightbox-close");
-  const images = document.querySelectorAll(".images-section img");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MyCool One-Page Site</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+      background: linear-gradient(to right, #f9f7f7, #dbe2ef);
+    }
+    nav {
+      background-color: #3f72af;
+      padding: 1em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    section {
+      padding: 60px 20px;
+      text-align: center;
+    }
+    h1, h2 {
+      color: #112d4e;
+    }
+    .images-section img {
+      width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      cursor:pointer;
+    }
+    .video-section iframe {
+      width: 80%;
+      height: 400px;
+      max-width: 700px;
+      border-radius: 10px;
+      border: none;
+    }
+    .contact-form input, .contact-form textarea {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact-form button {
+      background-color: #3f72af;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #112d4e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
 
-  images.forEach(img => {
-    img.style.cursor = "pointer";
-    img.addEventListener("click", () => {
-      lightbox.style.display = "block";
+    /* Lightbox styles */
+.lightbox {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#images">Images</a>
+    <a href="#videos">Videos</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home">
+    <h1>Welcome to My Cool Site</h1>
+    <p>This is a modern, vibrant one-page website with everything you need. Scroll or click the navigation to explore!</p>
+  </section>
+
+  <!-- Images Section -->
+  <section id="images" class="images-section">
+    <h2>Gallery</h2>
+    <img src="https://cdn.pixabay.com/photo/2021/12/29/14/47/water-6901805_1280.jpg" alt="Sea Image">
+    <img src="https://cdn.pixabay.com/photo/2021/12/29/14/47/water-6901805_1280.jpg" alt="Sea Image">
+    <img src="https://cdn.pixabay.com/photo/2021/12/29/14/47/water-6901805_1280.jpg" alt="Sea Image">
+  </section>
+
+  <!-- Videos Section -->
+  <section id="videos" class="video-section">
+    <h2>Featured Video</h2>
+<iframe width="914" height="514" src="https://www.youtube.com/embed/bn9F19Hi1Lk" title="Sleep For 11 Hours Straight, High Quality Stereo Ocean Sounds Of Rolling Waves For Deep Sleeping" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact-form">
+    <h2>Contact Us</h2>
+    <form action="#" method="post">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 My CoolSite. All rights reserved.</p>
+  </footer>
+
+  <!-- Lightbox container -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="Enlarged image">
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('lightbox-close');
+
+  // Attach click handlers to all images
+  document.querySelectorAll('.images-section img').forEach(img => {
+    img.addEventListener('click', () => {
       lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt;
+      lightbox.style.display = 'flex';
     });
   });
 
-  closeBtn.onclick = function() {
-    lightbox.style.display = "none";
-  };
-
-  // Close when clicking outside the image
-  lightbox.onclick = function(event) {
-    if (event.target === lightbox) {
-      lightbox.style.display = "none";
+  // Close on click outside image or on close button
+  closeBtn.addEventListener('click', () => lightbox.style.display = 'none');
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
     }
-  };
+  });
 </script>
+
+</body>
+</html>
